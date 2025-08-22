@@ -26,7 +26,7 @@ class _GraphViewState extends State<GraphView>
     super.initState();
     loadUsers();
 
-    // Animation setup
+   
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 800),
@@ -52,16 +52,15 @@ class _GraphViewState extends State<GraphView>
   void loadUsers() async {
   try {
     final data = await ApiService.fetchSteps(1);
-    print("📊 API Response: $data"); // <-- Debug
+    print("📊 API Response: $data"); 
 
-    // Agar steps key available hai
     if (data.isNotEmpty && data[0].containsKey("steps")) {
       users = data;
     } else {
-      // Agar API response format alag hai
+
       users = data.map<Map<String, dynamic>>((item) {
         return {
-          "steps": item["count"] ?? _random.nextInt(10000), // fallback
+          "steps": item["count"] ?? _random.nextInt(10000), 
           "day": item["day"] ?? "D",
         };
       }).toList();
@@ -78,7 +77,7 @@ class _GraphViewState extends State<GraphView>
   List<Map<String, dynamic>> _generateRandomData() {
     return List.generate(7, (i) {
       return {
-        "steps": 3000 + _random.nextInt(7000), // 3000 - 10000 ke beech
+        "steps": 3000 + _random.nextInt(7000), 
         "day": "D${i + 1}",
       };
     });

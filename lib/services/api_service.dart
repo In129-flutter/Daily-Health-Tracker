@@ -9,13 +9,9 @@ class ApiService {
   // Steps / Users (ReqRes mock API)
   static const String stepsUrl = "https://reqres.in/api/users";
 
-  // Mock Timer (create JSON at mocki.io with { "next_reminder_in": 600 })
   static const String timerUrl = "https://mocki.io/v1/your-timer-api-id";
 
-  /// Fetch activity logs with pagination
-  /// Fetch activity logs with pagination
-  /// Fetch activity logs with pagination
-  /// Fetch activity logs with pagination
+  
   static Future<List<Log>> fetchLogs(int page, int limit) async {
     try {
       final start = (page - 1) * limit;
@@ -32,12 +28,12 @@ class ApiService {
     }
   }
 
-  /// Fetch steps (using ReqRes users mock API)
+  // Fetch steps (using ReqRes users mock API)
   static Future<List<dynamic>> fetchSteps(int page) async {
     final res = await http.get(Uri.parse("$stepsUrl?page=$page"));
     if (res.statusCode == 200) {
       final data = jsonDecode(res.body);
-      return data['data']; // ReqRes returns { "data": [ {id, email, ...} ] }
+      return data['data']; 
     } else {
       throw Exception("Failed to load steps/users");
     }
@@ -48,7 +44,7 @@ class ApiService {
     final res = await http.get(Uri.parse(timerUrl));
     if (res.statusCode == 200) {
       final data = jsonDecode(res.body);
-      return data['next_reminder_in']; // Example: 600
+      return data['next_reminder_in']; 
     } else {
       throw Exception("Failed to load timer");
     }

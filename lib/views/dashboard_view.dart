@@ -44,7 +44,7 @@ class _DashboardViewState extends State<DashboardView>
         Tween<Offset>(begin: const Offset(1, 0), end: Offset.zero).animate(
             CurvedAnimation(parent: _controller3, curve: Curves.easeOut));
 
-    // staggered animations
+    //  animations
     _controller1.forward();
     Future.delayed(const Duration(milliseconds: 300), () {
       _controller2.forward();
@@ -71,14 +71,13 @@ class _DashboardViewState extends State<DashboardView>
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            /// 🔹 Profile Header
             Row(
               children: [
                 CircleAvatar(
                   radius: 35,
                   backgroundColor: AppColors.primary.withOpacity(0.2),
                   backgroundImage: const NetworkImage(
-                    "https://i.pravatar.cc/150?img=3", // Dummy profile pic
+                    "https://i.pravatar.cc/150?img=3", 
                   ),
                 ),
                 const SizedBox(width: 15),
@@ -86,7 +85,7 @@ class _DashboardViewState extends State<DashboardView>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: const [
                     Text(
-                      "John Doe", // ✅ Replace with logged in username
+                      "John Doe", 
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -95,7 +94,7 @@ class _DashboardViewState extends State<DashboardView>
                     ),
                     SizedBox(height: 5),
                     Text(
-                      "johndoe@email.com", // ✅ Replace with logged in email
+                      "johndoe@email.com", 
                       style: TextStyle(
                         fontSize: 14,
                         color: AppColors.textDark,
@@ -108,7 +107,9 @@ class _DashboardViewState extends State<DashboardView>
 
             const SizedBox(height: 40),
 
-            /// 🔹 Dashboard Buttons
+            
+
+
             SlideTransition(
               position: _slideFromRight,
               child: CustomAnimatedButton(
@@ -141,7 +142,10 @@ class _DashboardViewState extends State<DashboardView>
 
             const Spacer(),
 
-            /// 🔹 Logout Button
+
+
+
+
             Center(
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(

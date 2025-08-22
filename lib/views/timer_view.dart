@@ -25,7 +25,7 @@ class _TimerViewState extends State<TimerView>
     _controller =
         AnimationController(vsync: this, duration: const Duration(milliseconds: 1000));
 
-    // 👇 Initially enter from right
+
     _slideAnimation = Tween<Offset>(
       begin: const Offset(1.0, 0.0),
       end: Offset.zero,
@@ -36,7 +36,6 @@ class _TimerViewState extends State<TimerView>
 
     _controller.forward();
 
-    // 👇 Listener to detect when exit animation finishes
     _controller.addStatusListener((status) {
       if (status == AnimationStatus.completed && _isExiting) {
         Navigator.of(context).pop(); // Exit screen
@@ -50,16 +49,16 @@ class _TimerViewState extends State<TimerView>
         _isExiting = true;
         _slideAnimation = Tween<Offset>(
           begin: Offset.zero,
-          end: const Offset(-1.0, 0.0), // Exit to left
+          end: const Offset(-1.0, 0.0), 
         ).animate(CurvedAnimation(
           parent: _controller,
           curve: Curves.easeInCubic,
         ));
         _controller.reset();
-        _controller.forward(); // Play exit animation
+        _controller.forward();
       });
     }
-    return false; // Prevent default pop until animation finishes
+    return false; 
   }
 
   @override

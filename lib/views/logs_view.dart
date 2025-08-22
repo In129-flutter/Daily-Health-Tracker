@@ -77,7 +77,6 @@ class _LogsViewState extends State<LogsView>
               final log = logsToDisplay[index];
               final fromRight = index % 2 == 0;
 
-              // 👇 Agar ye index pehle animate ho chuka hai, to direct return
               if (_animatedIndexes.contains(index)) {
                 return _buildCard(log);
               }

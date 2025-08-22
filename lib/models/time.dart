@@ -2,7 +2,7 @@ import 'dart:async';
 
 class TimerService {
   static Timer? _timer;
-  static int seconds = 600; // default 10 min
+  static int seconds = 600; 
 
   static void start() {
     _timer?.cancel();

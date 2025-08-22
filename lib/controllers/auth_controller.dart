@@ -4,7 +4,6 @@ class AuthController extends GetxController {
   var isLoggedIn = false.obs;
   var username = "".obs;
 
-  // Simple login validation
   bool login(String user, String pass) {
     if (user.isEmpty || pass.isEmpty) {
       Get.snackbar("Error", "Please enter username & password");
@@ -12,7 +11,7 @@ class AuthController extends GetxController {
     } else if (user == "user" && pass == "12345") {
       username.value = user;
       isLoggedIn.value = true;
-      return true; // ✅ login success
+      return true; 
     } else {
       Get.snackbar("Login Failed", "Invalid credentials");
       return false;

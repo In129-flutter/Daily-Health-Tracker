@@ -30,13 +30,11 @@ class _LoginViewState extends State<LoginView>
       duration: const Duration(milliseconds: 900),
     );
 
-    // Start position (Right side → screen me enter hoga)
     _slideAnimation = Tween<Offset>(
       begin: const Offset(1, 0),
       end: Offset.zero,
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
 
-    // Start animation
     _controller.forward();
   }
 
@@ -57,7 +55,6 @@ class _LoginViewState extends State<LoginView>
         _isExiting = true;
       });
 
-      // Exit animation (slide left)
       _slideAnimation = Tween<Offset>(
         begin: Offset.zero,
         end: const Offset(-1, 0),
@@ -66,12 +63,11 @@ class _LoginViewState extends State<LoginView>
       _controller.reset();
       _controller.forward();
 
-      // Jab animation khatam ho jaye tab next page
       _controller.addStatusListener((status) {
         if (status == AnimationStatus.completed && _isExiting) {
-            TimerService.start();  // 👈 yaha start karna hai
+            TimerService.start();  
 
-          Get.offNamed("/dashboard"); // ✅ DashboardView pe jaayega
+          Get.offNamed("/dashboard"); 
           
         }
       });
@@ -116,7 +112,6 @@ class _LoginViewState extends State<LoginView>
                       ),
                       const SizedBox(height: 30),
 
-                      // Username
                       TextField(
                         controller: userController,
                         decoration: InputDecoration(
@@ -129,7 +124,6 @@ class _LoginViewState extends State<LoginView>
                       ),
                       const SizedBox(height: 15),
 
-                      // Password
                       TextField(
                         controller: passController,
                         obscureText: true,
@@ -143,7 +137,6 @@ class _LoginViewState extends State<LoginView>
                       ),
                       const SizedBox(height: 25),
 
-                      // Login Button
                       GestureDetector(
                         onTap: _onLogin,
                         child: AnimatedContainer(
